@@ -26,10 +26,12 @@ header <- dashboardHeader(
 
 # App sidebar content
 sidebar <- dashboardSidebar(
-  sidebarMenu(
-    menuItem('Upload file', tabName = 'Uploads')
-  )
+    sidebarMenu(
+        menuItem("Upload Files", tabName = "Upload"),
+        menuItem("Pvalue", tabName = "pval")
+    )
 )
+
 
 ## App body content
 body <- dashboardBody(
