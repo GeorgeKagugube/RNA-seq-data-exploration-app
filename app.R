@@ -20,13 +20,24 @@ library(dplyr)
 ## The shinny app starts from here
 ## Split the app here with the different sections labelled accordingly
 ## App header items
-header <- dashboardHeader()
+header <- dashboardHeader(
+  title = "GWK Data Explore"
+)
 
 # App sidebar content
-sidebar <- dashboardSidebar()
+sidebar <- dashboardSidebar(
+  sidebarMenu(
+    menuItem('Upload file', tabName = 'Uploads')
+  )
+)
 
 ## App body content
-body <- dashboardBody()
+body <- dashboardBody(
+  tabItems(
+    # Item 1
+    tabItem(tabName = 'Uploads')
+  )
+)
 
 ui <- dashboardPage(
   header, sidebar, body
