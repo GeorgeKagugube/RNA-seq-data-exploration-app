@@ -10,31 +10,28 @@ dir()
 ## Load the required libraries here
 library(shiny)
 library(shinydashboard)
+library(DT)
+library(clusterProfiler)
+library(org.Dr.eg.db)
+library(ggplot2)
+library(enrichplot)
+library(dplyr)
+
+## The shinny app starts from here
+## Split the app here with the different sections labelled accordingly
+## App header items
+header <- dashboardHeader()
+
+# App sidebar content
+sidebar <- dashboardSidebar()
+
+## App body content
+body <- dashboardBody()
 
 ui <- dashboardPage(
-  dashboardHeader(title = "Basic dashboard"),
-  dashboardSidebar(),
-  dashboardBody(
-    # Boxes need to be put in a row (or column)
-    fluidRow(
-      box(plotOutput("plot1", height = 250)),
-      
-      box(
-        title = "Controls",
-        sliderInput("slider", "Number of observations:", 1, 100, 50)
-      )
-    )
+  header, sidebar, body
   )
-)
 
-server <- function(input, output) {
-  set.seed(122)
-  histdata <- rnorm(500)
-  
-  output$plot1 <- renderPlot({
-    data <- histdata[seq_len(input$slider)]
-    hist(data)
-  })
-}
+server <- function(input, output) { }
 
 shinyApp(ui, server)
